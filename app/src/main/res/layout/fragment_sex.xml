@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@color/colorWhite"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:text="Giới tính của bạn là gì ?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:text="Về sau bạn có thể thay đổi những ai nhìn thấy giới tính của mình trên trang cá nhân."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:textAlignment="textEnd"
+                android:text="Nam"
+                android:id="@+id/radiobutton_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorBlack"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+
+            <RadioButton
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:textAlignment="textEnd"
+                android:text="Nữ"
+                android:id="@+id/radiobutton_female"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorBlack"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+
+            <RadioButton
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:textAlignment="textEnd"
+                android:text="Tùy chỉnh"
+                android:id="@+id/radiobutton_custom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorBlack"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button_continue"
+            android:textColor="#fff"
+            android:background="@drawable/custom_button_sign_in"
+            android:layout_marginTop="15dp"
+            android:text="Tiếp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</RelativeLayout>

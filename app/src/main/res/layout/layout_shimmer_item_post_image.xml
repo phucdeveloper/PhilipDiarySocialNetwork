@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--Thong tin bai viet-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:cardBackgroundColor="@color/colorShimmer"
+                app:cardCornerRadius="30dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop" />
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:background="@color/colorShimmer" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:background="@null"
+                        android:src="@drawable/icon_more_horiz" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:background="@color/colorShimmer" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- <pereira.agnaldo.previewimgcol.ImageCollectionView
+             android:id="@+id/imageCollectionView"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="15dp"
+             android:layout_marginTop="10dp"
+             android:layout_marginRight="15dp"
+             app:backgroundColor="@color/colorAccent"
+             app:baseRowHeight="150dp"
+             app:imageMargin="1dp"
+             app:maxImagePerRow="3"
+             app:maxRows="2"
+             app:pinchToZoom="false"
+             app:showExternalBorderMargins="true" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_marginEnd="5dp"
+                android:background="@color/colorShimmer" />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_marginEnd="5dp"
+                android:background="@color/colorShimmer" />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_marginEnd="5dp"
+                android:background="@color/colorShimmer" />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_marginEnd="5dp"
+                android:background="@color/colorShimmer" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="15dp"
+            android:background="#BEBEBE" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#fff"
+                android:drawableLeft="@drawable/icon_like"
+                android:paddingLeft="35dp"
+                android:text="Thích"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#fff"
+                android:drawableLeft="@drawable/icon_comment"
+                android:paddingLeft="35dp"
+                android:text="Bình luận"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#fff"
+                android:drawableLeft="@drawable/icon_share"
+                android:paddingLeft="35dp"
+                android:text="Chia sẻ"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="#CCCACA" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

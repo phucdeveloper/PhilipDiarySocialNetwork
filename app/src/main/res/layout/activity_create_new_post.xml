@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CreateNewPostActivity">
+
+    <LinearLayout
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:onClick="onBackClick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/icon_chevron_left"
+            app:title="Tin của bạn"
+            app:titleMarginStart="100dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_list_type_new_post"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="230dp" />
+
+        <Button
+            android:drawablePadding="10dp"
+            android:drawableStart="@drawable/icon_collections"
+            android:padding="10dp"
+            android:background="@drawable/custom_background_share"
+            android:text="@string/choose_multi_image"
+            android:layout_margin="25dp"
+            android:layout_gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_list_image"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        app:layout_anchorGravity="center_horizontal|bottom"
+        app:layout_anchor="@id/recyclerview_list_image"
+        android:src="@drawable/icon_camera_photo"
+        android:backgroundTint="@color/colorWhite"
+        android:layout_marginBottom="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

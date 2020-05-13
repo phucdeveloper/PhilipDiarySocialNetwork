@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    style="@android:style/Theme.Holo.Light"
+    android:background="@color/colorWhite"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SettingProfileActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_setting_profile"
+            android:background="@color/colorWhite"
+            app:navigationIcon="@drawable/icon_chevron_left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:text="Cài đặt trang cá nhân"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </androidx.appcompat.widget.Toolbar>
+        <View
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/layout_edit_profile"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/icon_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="Chỉnh sửa trang cá nhân"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/layout_new_post"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/icon_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="Kho lưu trữ tin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/layout_saved"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/icon_saved"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="Mục đã lưu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <View
+            android:background="#C2C1C2"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+
+        <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/icon_visibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="Chế độ xem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/icon_diary_actived"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="Nhật ký hoạt động"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/icon_time_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="Xem lại trang cá nhân"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/icon_lock_outline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="Xem lối tắt quyền riêng tư"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <View
+            android:background="#C2C1C2"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
+
+        <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/icon_search_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="Tìm kiếm trang cá nhân"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/icon_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="Cài đặt tưởng nhớ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="10dp"
+                android:src="@drawable/icon_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="Cài đặt khác"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <View
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:background="@color/colorWhite"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:textSize="28sp"
+                android:text="@string/friend"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+            <ImageButton
+                android:id="@+id/imagebutton_search"
+                android:padding="10dp"
+                android:src="@drawable/icon_search"
+                android:background="@drawable/custom_background_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:textSize="18sp"
+                android:id="@+id/button_suggestion"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Gợi ý"
+                android:background="@drawable/custom_background_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:textSize="18sp"
+                android:id="@+id/button_all_friend"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:padding="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Tất cả bạn bè"
+                android:background="@drawable/custom_background_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:lineSpacingExtra="5dp"
+            android:textColor="#414040"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:textSize="28sp"
+            android:text="Lời mời kết bạn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_list_invite_friend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

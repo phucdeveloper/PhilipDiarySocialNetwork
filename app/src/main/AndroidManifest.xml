@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.phucnguyen.chichisocialnetwork">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.SuggestionActivity"></activity>
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.GroupActivity" />
+        <activity android:name=".activity.EditProfileActivity" />
+        <activity android:name=".activity.SettingProfileActivity" />
+        <activity android:name=".activity.AccountDefaultActivity" />
+        <activity android:name=".activity.CreateGroupActivity" />
+        <activity android:name=".activity.GroupDetailActivity" />
+        <activity android:name=".activity.PostShareActivity" />
+        <activity android:name=".activity.PostImageDetailActivity" />
+        <activity android:name=".activity.ForgotPasswordActivity" />
+        <activity android:name=".activity.PostTextDetailActivity" />
+        <activity android:name=".activity.CreateNewPostActivity" />
+        <activity android:name=".activity.AccountActivity" />
+        <activity android:name=".activity.SignUpActivity" />
+        <activity android:name=".activity.SignInActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.CreatePostActivity" />
+        <activity android:name=".activity.HomeActivity" />
+
+        <service
+            android:name=".service.InviteFriendService"
+            android:enabled="true" />
+        <service
+            android:name=".service.NotificationService"
+            android:enabled="true" />
+    </application>
+
+</manifest>

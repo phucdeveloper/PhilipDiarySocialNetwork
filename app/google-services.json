@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "563919708132",
+    "firebase_url": "https://social-network-database-a1d29.firebaseio.com",
+    "project_id": "social-network-database-a1d29",
+    "storage_bucket": "social-network-database-a1d29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563919708132:android:b73e41d0e3d8ceaaf1b1f1",
+        "android_client_info": {
+          "package_name": "com.example.phucnguyen.chichisocialnetwork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563919708132-pa808laqpmh95kj2vjqatvctfioavdb3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNHtYzjw90BOMcYEX-bZLE42igNAemuhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563919708132-pa808laqpmh95kj2vjqatvctfioavdb3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

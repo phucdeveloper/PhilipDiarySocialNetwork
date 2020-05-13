@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:background="@color/colorWhite"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.appcompat.widget.Toolbar
+            app:titleMarginStart="100dp"
+            app:title="@string/discover"
+            app:navigationIcon="@drawable/icon_chevron_left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_your_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_background_view"
+                    android:drawableStart="@drawable/drawable_group"
+                    android:drawablePadding="10dp"
+                    android:padding="10dp"
+                    android:text="@string/your_group"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/button_create_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/custom_background_view"
+                    android:drawableStart="@drawable/drawable_add_circle"
+                    android:drawablePadding="10dp"
+                    android:padding="10dp"
+                    android:text="@string/create_group"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/button_discover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/custom_background_view"
+                    android:drawableStart="@drawable/drawable_discover"
+                    android:drawablePadding="10dp"
+                    android:padding="10dp"
+                    android:text="@string/discover"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/button_setting_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/custom_background_view"
+                    android:drawableStart="@drawable/drawable_settings"
+                    android:drawablePadding="10dp"
+                    android:padding="10dp"
+                    android:text="@string/setting"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_discover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
