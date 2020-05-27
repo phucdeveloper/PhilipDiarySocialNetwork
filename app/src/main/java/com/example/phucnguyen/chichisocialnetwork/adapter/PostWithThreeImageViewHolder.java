@@ -56,6 +56,9 @@ public class PostWithThreeImageViewHolder extends PostViewHolder {
         if(!TextUtils.isEmpty(timeline.getPostImage().getStatusLine())){
             txtContentPost.setText(timeline.getPostImage().getStatusLine());
         }
+        else{
+            txtContentPost.setVisibility(View.GONE);
+        }
 
         if (timeline.getPostImage().getNumberFavorite() != 0) {
             imgLike.setImageResource(R.drawable.ic_thumb_up);

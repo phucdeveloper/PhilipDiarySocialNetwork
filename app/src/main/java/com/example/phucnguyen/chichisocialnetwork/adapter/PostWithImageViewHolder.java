@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.example.phucnguyen.chichisocialnetwork.R;
@@ -32,9 +30,8 @@ import com.google.firebase.database.ValueEventListener;
 
 public class PostWithImageViewHolder extends PostViewHolder {
 
-    private TextView txtNameAccount, txtTimePost, txtNumberFavorite, txtStatus, txtContentPost;
-    private ImageView imgAvatar, imgLike;
-    private RecyclerView recyclerView;
+    private TextView txtNameAccount, txtTimePost, txtNumberFavorite, txtStatus, txtContentPost, txtNumberImage;
+    private ImageView imgAvatar, imgLike, imgOne, imgTwo, imgThree, imgFour;
     private Button btnComment, btnShare, btnLike;
     private ImageButton imgButtonMenu;
 
@@ -62,13 +59,13 @@ public class PostWithImageViewHolder extends PostViewHolder {
             btnLike.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
 
-        recyclerView.setHasFixedSize(true);
+        Glide.with(context).load(timeline.getPostImage().getArrayList().get(0)).into(imgOne);
+        Glide.with(context).load(timeline.getPostImage().getArrayList().get(1)).into(imgTwo);
+        Glide.with(context).load(timeline.getPostImage().getArrayList().get(2)).into(imgThree);
+        Glide.with(context).load(timeline.getPostImage().getArrayList().get(3)).into(imgFour);
 
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, RecyclerView.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-
-        ListImagePostAdapter adapter = new ListImagePostAdapter(timeline.getPostImage().getArrayList(), context);
-        recyclerView.setAdapter(adapter);
+        int size = timeline.getPostImage().getArrayList().size();
+        txtNumberImage.setText("+" + (size -3));
 
         btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,7 +142,6 @@ public class PostWithImageViewHolder extends PostViewHolder {
         txtNameAccount = itemView.findViewById(R.id.textview_text_nickname);
         txtTimePost = itemView.findViewById(R.id.textview_time);
         btnComment = itemView.findViewById(R.id.button_comment);
-        recyclerView = itemView.findViewById(R.id.list_image);
         btnShare = itemView.findViewById(R.id.button_share);
         btnLike = itemView.findViewById(R.id.button_like);
         imgLike = itemView.findViewById(R.id.imageview_like);
@@ -153,6 +149,11 @@ public class PostWithImageViewHolder extends PostViewHolder {
         imgButtonMenu = itemView.findViewById(R.id.imagebutton_menu_image);
         txtStatus = itemView.findViewById(R.id.item_textview_status);
         txtContentPost = itemView.findViewById(R.id.item_textview_content_post);
+        txtNumberImage = itemView.findViewById(R.id.textview_number_image);
+        imgFour = itemView.findViewById(R.id.imageview_image_four);
+        imgTwo = itemView.findViewById(R.id.imageview_image_two);
+        imgOne = itemView.findViewById(R.id.imageview_image_one);
+        imgThree = itemView.findViewById(R.id.imageview_image_three);
     }
 
     private void updateNumberFavoriteOfPost(String idUser, String idPost, double number) {

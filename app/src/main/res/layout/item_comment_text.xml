@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
-                android:background="@drawable/custom_edittext_comment"
+                android:background="@drawable/custom_background_comment"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">

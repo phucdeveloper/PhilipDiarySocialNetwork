@@ -57,6 +57,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder>{
                     return new PostWithThreeImageViewHolder(view);
                 }
 
+                if(arrayList.get(i).getPostImage().getArrayList().size() > 3){
+                    view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_post_with_image, parent, false);
+                    return new PostWithImageViewHolder(view);
+                }
+
 
             case Constant.ITEM_POST_WITH_TEXT:
                 if(arrayList.get(i).getPostText().getBackground() != null){

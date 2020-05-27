@@ -70,7 +70,7 @@ public class PostImageDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("data");
 
-        if(bundle != null){
+        if (bundle != null) {
             timeline = (Timeline) bundle.getSerializable("timeline");
             user = (User) bundle.getSerializable("user");
         }
@@ -108,7 +108,7 @@ public class PostImageDetailActivity extends AppCompatActivity {
                 } else {
                     String keyComment = UUID.randomUUID().toString();
                     insertToDatabase(idPost, keyComment, comment);
-                   // imgDisplayImage.clearColorFilter();
+                    // imgDisplayImage.clearColorFilter();
                     isPicture = false;
                 }
             }
@@ -175,8 +175,7 @@ public class PostImageDetailActivity extends AppCompatActivity {
         recyclerViewListComment.setLayoutManager(layoutManager);
 
         final ArrayList<Comment> arrayList = new ArrayList<>();
-        if (idPost == null) {
-        } else {
+        if (idPost != null) {
             databaseReference = firebaseDatabase.getReference().child("Comments").child(idPost);
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override

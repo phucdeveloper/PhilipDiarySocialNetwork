@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.phucnguyen.chichisocialnetwork.R;
 import com.example.phucnguyen.chichisocialnetwork.activity.AccountDefaultActivity;
 import com.example.phucnguyen.chichisocialnetwork.activity.PostShareActivity;
-import com.example.phucnguyen.chichisocialnetwork.activity.PostTextDetailActivity;
+import com.example.phucnguyen.chichisocialnetwork.activity.PostTextBackgroundDetailActivity;
 import com.example.phucnguyen.chichisocialnetwork.callback.OnLikeClickListener;
 import com.example.phucnguyen.chichisocialnetwork.model.Timeline;
 import com.example.phucnguyen.chichisocialnetwork.model.User;
@@ -69,7 +69,7 @@ public class PostTextWithBackgroundViewHolder extends PostViewHolder {
         btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PostTextDetailActivity.class);
+                Intent intent = new Intent(context, PostTextBackgroundDetailActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("user", user);

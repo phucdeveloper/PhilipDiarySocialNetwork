@@ -11,6 +11,7 @@
         android:orientation="vertical">
         <!--Thong tin bai viet-->
         <LinearLayout
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -138,11 +139,13 @@
                     android:gravity="center_vertical">
 
                     <ImageView
+                        android:visibility="gone"
                         android:id="@+id/imageview_like"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/textview_number_favorite"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -151,6 +154,7 @@
                         android:textSize="18sp" />
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/textview_number_comment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -158,6 +162,7 @@
                         android:textSize="18sp" />
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/textview_number_share"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -165,8 +170,6 @@
                         android:textSize="18sp" />
                 </LinearLayout>
             </LinearLayout>
-
-            <!--<include layout="@layout/layout_menu_emotions"/>-->
         </FrameLayout>
 
 

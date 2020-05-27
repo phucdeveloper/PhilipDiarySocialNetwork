@@ -40,7 +40,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:background="@drawable/custom_edittext_comment"
+                            android:background="@drawable/custom_background_comment"
                             android:drawableStart="@drawable/icon_search"
                             android:drawablePadding="10dp"
                             android:hint="@string/search_group"

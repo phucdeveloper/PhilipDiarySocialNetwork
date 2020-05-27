@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="#ECF8F8"
+    android:gravity="center_vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_margin="10dp"
+        app:cardCornerRadius="30dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp">
+        <ImageView
+            android:id="@+id/imageview_avatar"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content">
+        <TextView
+
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textColor="#101010"
+            android:textSize="18sp"
+            android:text="Phuc nguyen da binh luan vao bai viet cua minh trong mot thoi gian sap toi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="18sp"
+                android:text="4 giờ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginStart="20dp"
+                android:textSize="18sp"
+                android:text="Mi te lam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+    <ImageButton
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:src="@drawable/icon_more_horiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

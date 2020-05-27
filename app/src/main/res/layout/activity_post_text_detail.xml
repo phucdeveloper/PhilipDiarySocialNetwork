@@ -69,21 +69,11 @@
             </LinearLayout>
         </LinearLayout>
 
-        <FrameLayout
-            android:layout_marginStart="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/imageview_background"
-                android:scaleType="centerCrop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/textview_content_post_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp" />
-        </FrameLayout>
+        <TextView
+            android:id="@+id/textview_content_post_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp" />
 
         <View
             android:layout_width="match_parent"
@@ -161,39 +151,47 @@
                     android:scaleType="centerCrop" />
             </androidx.cardview.widget.CardView>
 
-            <EditText
-                android:id="@+id/edittext_input_comment"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:autofillHints="@string/name"
-                android:background="@drawable/custom_edittext_comment"
-                android:hint="@string/write_comment"
-                android:inputType="text"
-                android:padding="10dp" />
+                android:background="@drawable/custom_background_comment"
+                android:gravity="center_vertical">
 
-            <ImageButton
-                android:id="@+id/imagebutton_camera"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/icon_open_gallery" />
+                <EditText
+                    android:id="@+id/edittext_input_comment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints="@string/name"
+                    android:background="@null"
+                    android:hint="@string/write_comment"
+                    android:inputType="text"
+                    android:padding="10dp" />
 
-            <ImageButton
-                android:id="@+id/imagebutton_send_comment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:background="@drawable/icon_send" />
+                <ImageButton
+                    android:id="@+id/imagebutton_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@null"
+                    android:src="@drawable/icon_open_gallery" />
+
+                <ImageButton
+                    android:id="@+id/imagebutton_send_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/icon_send" />
+            </LinearLayout>
         </LinearLayout>
 
         <ImageView
-            android:scaleType="centerCrop"
             android:id="@+id/imageview_display_image"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp" />
+            android:layout_margin="10dp"
+            android:scaleType="centerCrop" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_list_comment"

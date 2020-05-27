@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.phucnguyen.chichisocialnetwork.R;
 import com.example.phucnguyen.chichisocialnetwork.adapter.CommentAdapter;
-import com.example.phucnguyen.chichisocialnetwork.firebase.GetDataFromFirebase;
 import com.example.phucnguyen.chichisocialnetwork.model.Comment;
 import com.example.phucnguyen.chichisocialnetwork.model.Timeline;
 import com.example.phucnguyen.chichisocialnetwork.model.User;
@@ -37,10 +36,10 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class PostTextDetailActivity extends AppCompatActivity {
+public class PostTextBackgroundDetailActivity extends AppCompatActivity {
 
     TextView txtContentPost, txtNameAccount, txtTimeCreate;
-    ImageView imgAvatar, imgAvatarComment, imgDisplayImage;
+    ImageView imgAvatar, imgAvatarComment, imgDisplayImage, imgBackground;
     ImageButton imgbuttonComment, imgbuttonCamera;
     EditText edtInputComment;
     RecyclerView recyclerViewListComment;
@@ -59,7 +58,7 @@ public class PostTextDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_text_detail);
+        setContentView(R.layout.activity_post_text_background_detail);
 
         initView();
 
@@ -73,13 +72,14 @@ public class PostTextDetailActivity extends AppCompatActivity {
         }
 
         if (timeline == null) {
-            Toast.makeText(PostTextDetailActivity.this, "Khong nhan duoc du lieu nao ca", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PostTextBackgroundDetailActivity.this, "Khong nhan duoc du lieu nao ca", Toast.LENGTH_SHORT).show();
         } else {
             idPost = timeline.getPostText().getIdPost();
             txtNameAccount.setText(user.getNickname());
             txtTimeCreate.setText(timeline.getPostText().getTimeCreate());
-            Glide.with(PostTextDetailActivity.this).load(user.getAvatar()).into(imgAvatar);
-            Glide.with(PostTextDetailActivity.this).load(user.getAvatar()).into(imgAvatarComment);
+            Glide.with(PostTextBackgroundDetailActivity.this).load(user.getAvatar()).into(imgAvatar);
+            Glide.with(PostTextBackgroundDetailActivity.this).load(user.getAvatar()).into(imgAvatarComment);
+            Glide.with(PostTextBackgroundDetailActivity.this).load(timeline.getPostText().getBackground()).into(imgBackground);
             txtContentPost.setText(timeline.getPostText().getContentPost());
         }
 
@@ -163,12 +163,13 @@ public class PostTextDetailActivity extends AppCompatActivity {
         imgbuttonCamera = findViewById(R.id.imagebutton_camera);
         imgDisplayImage = findViewById(R.id.imageview_display_image);
         imgAvatarComment = findViewById(R.id.imageview_avatar_comment);
+        imgBackground = findViewById(R.id.imageview_background);
     }
 
     private void setUpRecyclerViewListComment(final String idPost) {
         recyclerViewListComment.setHasFixedSize(true);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(PostTextDetailActivity.this, RecyclerView.VERTICAL, true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(PostTextBackgroundDetailActivity.this, RecyclerView.VERTICAL, true);
         recyclerViewListComment.setLayoutManager(layoutManager);
 
         final ArrayList<Comment> arrayList = new ArrayList<>();
@@ -182,7 +183,7 @@ public class PostTextDetailActivity extends AppCompatActivity {
                         Comment comment = data.getValue(Comment.class);
                         arrayList.add(comment);
                     }
-                    final CommentAdapter adapter = new CommentAdapter(arrayList, PostTextDetailActivity.this);
+                    final CommentAdapter adapter = new CommentAdapter(arrayList, PostTextBackgroundDetailActivity.this);
                     recyclerViewListComment.setAdapter(adapter);
 
                     adapter.setOnReplyClickListener(new CommentAdapter.OnReplyClickListener() {
@@ -200,7 +201,7 @@ public class PostTextDetailActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(PostTextDetailActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PostTextBackgroundDetailActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
