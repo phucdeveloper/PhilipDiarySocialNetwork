@@ -26,8 +26,8 @@
             app:cardBackgroundColor="@color/colorWhite"
             app:cardCornerRadius="30dp"
             android:layout_margin="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp">
+            android:layout_width="60dp"
+            android:layout_height="60dp">
             <ImageView
                 android:id="@+id/imageview_avatar"
                 android:scaleType="centerCrop"
@@ -39,7 +39,7 @@
             android:layout_gravity="bottom"
             android:layout_margin="10dp"
             android:textColor="#fff"
-            android:textSize="18sp"
+            android:textSize="23sp"
             android:text="Joker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

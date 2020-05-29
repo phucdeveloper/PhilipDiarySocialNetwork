@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:layout_margin="10dp"
+            android:layout_margin="8dp"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -41,7 +41,7 @@
                 android:textAllCaps="false"
                 android:textStyle="bold"
                 android:padding="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="8dp"
                 android:text="Gợi ý"
                 android:background="@drawable/custom_background_view"
                 android:layout_width="wrap_content"
@@ -61,6 +61,7 @@
         </LinearLayout>
 
         <TextView
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -70,8 +71,8 @@
 
         <View
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:background="@color/colorBlack"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>
@@ -79,8 +80,8 @@
         <TextView
             android:textAlignment="center"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"
             android:textStyle="bold"
             android:textColor="@color/colorBlack"
             android:textSize="28sp"

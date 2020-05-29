@@ -53,6 +53,11 @@ dependencies {
 
 //    implemetation 'com.github.perfomer:blitz:1.0.3'
 
+    // library fancy facebook badge
+    implementation 'com.github.Shashank02051997:FancyFacebookBadge-Android:1.4'
+    //library animated bottom bar
+    implementation 'nl.joery.animatedbottombar:library:1.0.8'
+
     //firebase sdk
     implementation 'com.google.firebase:firebase-auth:19.3.1'
     implementation 'com.google.firebase:firebase-storage:19.1.1'

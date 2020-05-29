@@ -188,7 +188,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@null"
-            android:src="@drawable/icon_image1" />
+            android:src="@drawable/icon_image_green" />
 
         <ImageButton
             android:contentDescription="@string/app_name"

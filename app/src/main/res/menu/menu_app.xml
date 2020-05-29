@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title=""
+    <item android:title="Home"
         android:id="@+id/home"
+        android:orderInCategory="1"
         android:icon="@drawable/icon_home"/>
 
     <item android:icon="@drawable/icon_live_tv"
-        android:title=""
+        android:title="Watch"
+        android:orderInCategory="2"
         android:id="@+id/watch"/>
 
     <item android:icon="@drawable/icon_group"
-        android:title=""
+        android:title="Friend"
+        android:orderInCategory="3"
         android:id="@+id/group"/>
 
     <item
+        android:orderInCategory="4"
         android:icon="@drawable/icon_notifications_none"
-        android:title=""
+        android:title="Notification"
         android:id="@+id/notification"/>
 
-    <item android:id="@+id/menu"
+    <item
+        android:orderInCategory="5"
+        android:id="@+id/menu"
         android:icon="@drawable/icon_menu"
-        android:title=""/>
+        android:title="Menu"/>
 </menu>

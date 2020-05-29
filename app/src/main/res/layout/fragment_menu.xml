@@ -27,9 +27,10 @@
                     android:textSize="28sp"
                     android:textStyle="bold" />
 
-                <androidx.appcompat.widget.SearchView
+                <ImageButton
+                    android:src="@drawable/icon_search"
                     android:layout_margin="10dp"
-                    android:background="@drawable/custom_background_view"
+                    android:background="@drawable/custom_imagebutton_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

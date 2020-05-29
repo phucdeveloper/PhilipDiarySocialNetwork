@@ -21,38 +21,31 @@
 
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#fff">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/group"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
 
                         <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/icon_chevron_left" />
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:src="@drawable/icon_search"
                             android:layout_margin="10dp"
-                            android:background="@drawable/custom_background_comment"
-                            android:drawableStart="@drawable/icon_search"
-                            android:drawablePadding="10dp"
-                            android:hint="@string/search_group"
-                            android:inputType="text"
-                            android:textColor="@color/colorBlack" />
+                            android:background="@drawable/custom_imagebutton_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </androidx.appcompat.widget.Toolbar>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#252525" />
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
@@ -71,7 +64,7 @@
                             android:background="@drawable/custom_background_view"
                             android:drawableStart="@drawable/drawable_group"
                             android:drawablePadding="10dp"
-                            android:padding="10dp"
+                            android:padding="8dp"
                             android:text="@string/your_group"
                             android:textAllCaps="false"
                             android:textColor="@color/colorBlack"
@@ -85,7 +78,7 @@
                             android:background="@drawable/custom_background_view"
                             android:drawableStart="@drawable/drawable_add_circle"
                             android:drawablePadding="10dp"
-                            android:padding="10dp"
+                            android:padding="8dp"
                             android:text="@string/create_group"
                             android:textAllCaps="false"
                             android:textColor="@color/colorBlack"
@@ -99,7 +92,7 @@
                             android:background="@drawable/custom_background_view"
                             android:drawableStart="@drawable/drawable_discover"
                             android:drawablePadding="10dp"
-                            android:padding="10dp"
+                            android:padding="8dp"
                             android:text="@string/discover"
                             android:textAllCaps="false"
                             android:textColor="@color/colorBlack"
@@ -113,7 +106,7 @@
                             android:background="@drawable/custom_background_view"
                             android:drawableStart="@drawable/drawable_settings"
                             android:drawablePadding="10dp"
-                            android:padding="10dp"
+                            android:padding="8dp"
                             android:text="@string/setting"
                             android:textAllCaps="false"
                             android:textColor="@color/colorBlack"

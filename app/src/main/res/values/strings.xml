@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Philip Diary</string>
     <string name="welcome">Welcome,</string>
+
     <string name="email">Email</string>
     <string name="password">Mật khẩu</string>
     <string name="forgot_password">Quên mật khẩu?</string>
@@ -42,9 +43,14 @@
     <string name="background">Hình nền</string>
     <string name="status_public">Công khai</string>
     <string name="album">Album</string>
+
+    <string name="group">Nhóm</string>
     <string name="create_group">Tạo nhóm</string>
     <string name="your_group">Nhóm của bạn</string>
     <string name="search_group">Tìm kiếm nhóm</string>
+    <string name="discover">Khám phá</string>
+
+
     <string name="name_group">57K1 Công Nghệ Thông Tin Vinh University</string>
     <string name="input_email">Nhập email...</string>
     <string name="input_password">Nhập mật khẩu...</string>
@@ -55,7 +61,6 @@
     <string name="event">Sự kiện</string>
     <string name="save">Đã lưu</string>
     <string name="signout">Đăng xuất</string>
-    <string name="group">Nhóm</string>
     <string name="watch">Watch</string>
     <string name="detail">Chi tiết</string>
     <string name="edit">Chỉnh sửa</string>
@@ -63,7 +68,6 @@
     <string name="image_background">Ảnh bìa</string>
     <string name="choose_multi_image">Chọn nhiều ảnh</string>
     <string name="setting">Cài đặt</string>
-    <string name="discover">Khám phá</string>
     <string name="notification_invitefriend">Bạn hiện đang có lời mời kết bạn</string>
     <string name="description">Là một lời mời kết bạn từ một người khác trong ứng dụng</string>
 </resources>
