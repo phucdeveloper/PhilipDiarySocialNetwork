@@ -58,45 +58,13 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- <pereira.agnaldo.previewimgcol.ImageCollectionView
-             android:id="@+id/imageCollectionView"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginLeft="15dp"
-             android:layout_marginTop="10dp"
-             android:layout_marginRight="15dp"
-             app:backgroundColor="@color/colorAccent"
-             app:baseRowHeight="150dp"
-             app:imageMargin="1dp"
-             app:maxImagePerRow="3"
-             app:maxRows="2"
-             app:pinchToZoom="false"
-             app:showExternalBorderMargins="true" />-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp">
 
             <View
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:layout_marginEnd="5dp"
-                android:background="@color/colorShimmer" />
-
-            <View
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:layout_marginEnd="5dp"
-                android:background="@color/colorShimmer" />
-
-            <View
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:layout_marginEnd="5dp"
-                android:background="@color/colorShimmer" />
-
-            <View
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginEnd="5dp"
                 android:background="@color/colorShimmer" />

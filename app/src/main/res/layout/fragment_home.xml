@@ -1,57 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-      <!--  <androidx.appcompat.widget.Toolbar
-            android:padding="6dp"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff">
-
-            <LinearLayout
-                android:background="@color/colorWhite"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/app_name"
-                    android:textColor="#088CF3"
-                    android:textSize="28sp"
-                    android:textStyle="bold" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/custom_imagebutton_search"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/icon_search" />
-
-                <ImageButton
-                    android:layout_marginStart="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/custom_imagebutton_search"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/icon_email" />
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>-->
-
-
-        <androidx.cardview.widget.CardView
-            app:cardBackgroundColor="#fff"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            app:cardBackgroundColor="#fff">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_list_new_post"
@@ -77,10 +39,10 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
-                    app:cardBackgroundColor="@color/colorPrimaryDark"
-                    app:cardCornerRadius="30dp"
                     android:layout_width="50dp"
-                    android:layout_height="50dp">
+                    android:layout_height="50dp"
+                    app:cardBackgroundColor="@color/colorPrimaryDark"
+                    app:cardCornerRadius="30dp">
 
                     <ImageView
                         android:id="@+id/imageview_avatar"
@@ -117,6 +79,12 @@
             android:id="@+id/recyclerview_list_post"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+     <!--   <aglibs.loading.skeleton.layout.SkeletonRecyclerView
+            app:skeletonViewHolderItem="@layout/item_layout_shimmer_post"
+            android:id="@+id/recyclerview_list_post"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>-->
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
 

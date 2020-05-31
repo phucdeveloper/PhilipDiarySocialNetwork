@@ -27,7 +27,6 @@ import com.example.phucnguyen.chichisocialnetwork.model.PostWithImage;
 import com.example.phucnguyen.chichisocialnetwork.model.Timeline;
 import com.example.phucnguyen.chichisocialnetwork.model.User;
 import com.example.phucnguyen.chichisocialnetwork.utils.Constant;
-import com.example.phucnguyen.chichisocialnetwork.utils.UserUtil;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +40,6 @@ import com.google.firebase.storage.UploadTask;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.UUID;
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -49,7 +47,7 @@ public class AccountActivity extends AppCompatActivity {
     ImageButton imgButtonUpdatePhoto, imgButtonUpdateBackground, imgButtonSettingProfile;
     ImageView imgAvatar, imgBackground, imgAvatarPost;
     TextView txtNickname, txtWork, txtStudent, txtCountry, txtAddress;
-    LinearLayout layoutAddPost;
+    LinearLayout layoutAddPost, linearLayout;
     EditText edtSearch;
     Toolbar toolbar;
 
@@ -73,12 +71,13 @@ public class AccountActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
 
+        linearLayout.setVisibility(View.GONE);
         final Intent intent = getIntent();
         String idUser = intent.getStringExtra("UserID");
 
         if (idUser != null)
             databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
-        databaseReference.child(idUser).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(idUser).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 user = dataSnapshot.getValue(User.class);
@@ -303,5 +302,6 @@ public class AccountActivity extends AppCompatActivity {
         txtWork = findViewById(R.id.textview_work);
         toolbar = findViewById(R.id.toolbar_account);
         imgAvatarPost = findViewById(R.id.avatar);
+        linearLayout = findViewById(R.id.layout);
     }
 }

@@ -57,7 +57,7 @@ public class PostWithTextViewHolder extends PostViewHolder {
         if (timeline.getPostText().getNumberFavorite() != 0) {
             imgLike.setImageResource(R.drawable.ic_thumb_up);
             txtNumberFavorite.setText(String.valueOf(timeline.getPostText().getNumberFavorite()));
-            btnLike.setTextColor(context.getColor(R.color.color));
+            btnLike.setTextColor(context.getColor(R.color.colorGreenDark));
             btnLike.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
 

@@ -20,6 +20,7 @@ import com.example.phucnguyen.chichisocialnetwork.R;
 import com.example.phucnguyen.chichisocialnetwork.activity.AccountDefaultActivity;
 import com.example.phucnguyen.chichisocialnetwork.activity.PostImageDetailActivity;
 import com.example.phucnguyen.chichisocialnetwork.activity.PostShareActivity;
+import com.example.phucnguyen.chichisocialnetwork.activity.PostTwoImageDetailActivity;
 import com.example.phucnguyen.chichisocialnetwork.callback.OnLikeClickListener;
 import com.example.phucnguyen.chichisocialnetwork.model.Timeline;
 import com.example.phucnguyen.chichisocialnetwork.model.User;
@@ -69,7 +70,7 @@ public class PostWithTwoImageViewHolder extends PostViewHolder {
         btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PostImageDetailActivity.class);
+                Intent intent = new Intent(context, PostTwoImageDetailActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("user", user);
