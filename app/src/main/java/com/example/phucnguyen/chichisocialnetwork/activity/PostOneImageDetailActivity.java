@@ -39,11 +39,10 @@ import java.util.ArrayList;
 public class PostOneImageDetailActivity extends AppCompatActivity {
 
     TextView txtContentPost, txtNameAccount, txtTimeCreate;
-    ImageView imgAvatar, imgDisplayImage, imgAvatarComment;
+    ImageView imgAvatar, imgDisplayImage, imgAvatarComment, imgImage;
     ImageButton imgbuttonComment, imgbuttonCamera;
     EditText edtInputComment;
     RecyclerView recyclerViewListComment;
-    ViewPager viewPager;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -80,6 +79,7 @@ public class PostOneImageDetailActivity extends AppCompatActivity {
             txtTimeCreate.setText(timeline.getPostImage().getTimeCreate());
             txtNameAccount.setText(user.getNickname());
             Glide.with(PostOneImageDetailActivity.this).load(user.getAvatar()).into(imgAvatarComment);
+            Glide.with(PostOneImageDetailActivity.this).load(timeline.getPostImage().getArrayList().get(0)).into(imgImage);
         }
 
         imgbuttonCamera.setOnClickListener(new View.OnClickListener() {
@@ -191,7 +191,7 @@ public class PostOneImageDetailActivity extends AppCompatActivity {
         recyclerViewListComment = findViewById(R.id.recyclerview_list_comment);
         imgbuttonCamera = findViewById(R.id.imagebutton_camera);
         imgDisplayImage = findViewById(R.id.imageview_display_image);
-        viewPager = findViewById(R.id.view_pager_display_image);
         imgAvatarComment = findViewById(R.id.imageview_avatar_comment);
+        imgImage = findViewById(R.id.imageview_image);
     }
 }

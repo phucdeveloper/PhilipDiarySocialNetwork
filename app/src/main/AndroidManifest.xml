@@ -24,7 +24,7 @@
         <activity android:name=".activity.CreateGroupActivity" />
         <activity android:name=".activity.GroupDetailActivity" />
         <activity android:name=".activity.PostShareActivity" />
-        <activity android:name=".activity.PostImageDetailActivity" />
+        <activity android:name=".activity.PostThreeImageDetailActivity" />
         <activity android:name=".activity.ForgotPasswordActivity" />
         <activity android:name=".activity.PostTextDetailActivity" />
         <activity android:name=".activity.CreateNewPostActivity" />

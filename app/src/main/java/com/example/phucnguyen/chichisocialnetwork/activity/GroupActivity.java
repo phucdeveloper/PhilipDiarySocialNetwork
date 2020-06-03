@@ -58,7 +58,6 @@ public class GroupActivity extends AppCompatActivity implements OnClickListener 
     }
 
     class PagerAdapter extends FragmentPagerAdapter{
-       // ArrayList<Fragment> arrayList = new ArrayList<>();
         public PagerAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);
         }

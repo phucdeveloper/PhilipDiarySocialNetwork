@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.phucnguyen.chichisocialnetwork.R;
 import com.example.phucnguyen.chichisocialnetwork.adapter.CommentAdapter;
-import com.example.phucnguyen.chichisocialnetwork.adapter.ImagePagerAdapter;
 import com.example.phucnguyen.chichisocialnetwork.model.Comment;
 import com.example.phucnguyen.chichisocialnetwork.model.Timeline;
 import com.example.phucnguyen.chichisocialnetwork.model.User;
@@ -38,14 +36,13 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class PostImageDetailActivity extends AppCompatActivity {
+public class PostThreeImageDetailActivity extends AppCompatActivity {
 
     TextView txtContentPost, txtNameAccount, txtTimeCreate;
-    ImageView imgAvatar, imgDisplayImage, imgAvatarComment;
+    ImageView imgAvatar, imgDisplayImage, imgAvatarComment, imgOne, imgTwo, imgThree;
     ImageButton imgbuttonComment, imgbuttonCamera;
     EditText edtInputComment;
     RecyclerView recyclerViewListComment;
-    ViewPager viewPager;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -61,7 +58,7 @@ public class PostImageDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_image_detail);
+        setContentView(R.layout.activity_post_three_image_detail);
 
         initView();
 
@@ -76,15 +73,16 @@ public class PostImageDetailActivity extends AppCompatActivity {
         }
 
         if (timeline == null) {
-            Toast.makeText(PostImageDetailActivity.this, "Khong nhan duoc du lieu nao ca", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PostThreeImageDetailActivity.this, "Khong nhan duoc du lieu nao ca", Toast.LENGTH_SHORT).show();
         } else {
             idPost = timeline.getPostImage().getIdPost();
-            Glide.with(PostImageDetailActivity.this).load(user.getAvatar()).into(imgAvatar);
+            Glide.with(PostThreeImageDetailActivity.this).load(user.getAvatar()).into(imgAvatar);
             txtTimeCreate.setText(timeline.getPostImage().getTimeCreate());
             txtNameAccount.setText(user.getNickname());
-            ImagePagerAdapter adapter = new ImagePagerAdapter(timeline.getPostImage().getArrayList(), PostImageDetailActivity.this);
-            viewPager.setAdapter(adapter);
-            Glide.with(PostImageDetailActivity.this).load(user.getAvatar()).into(imgAvatarComment);
+            Glide.with(PostThreeImageDetailActivity.this).load(user.getAvatar()).into(imgAvatarComment);
+            Glide.with(PostThreeImageDetailActivity.this).load(timeline.getPostImage().getArrayList().get(0)).into(imgOne);
+            Glide.with(PostThreeImageDetailActivity.this).load(timeline.getPostImage().getArrayList().get(1)).into(imgTwo);
+            Glide.with(PostThreeImageDetailActivity.this).load(timeline.getPostImage().getArrayList().get(2)).into(imgThree);
         }
 
         imgbuttonCamera.setOnClickListener(new View.OnClickListener() {
@@ -164,14 +162,16 @@ public class PostImageDetailActivity extends AppCompatActivity {
         recyclerViewListComment = findViewById(R.id.recyclerview_list_comment);
         imgbuttonCamera = findViewById(R.id.imagebutton_camera);
         imgDisplayImage = findViewById(R.id.imageview_display_image);
-        viewPager = findViewById(R.id.view_pager_display_image);
         imgAvatarComment = findViewById(R.id.imageview_avatar_comment);
+        imgOne = findViewById(R.id.imageview_image_one);
+        imgTwo = findViewById(R.id.imageview_image_two);
+        imgThree = findViewById(R.id.imageview_image_three);
     }
 
     private void setUpRecyclerViewListComment() {
         recyclerViewListComment.setHasFixedSize(true);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(PostImageDetailActivity.this, RecyclerView.VERTICAL, true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(PostThreeImageDetailActivity.this, RecyclerView.VERTICAL, true);
         recyclerViewListComment.setLayoutManager(layoutManager);
 
         final ArrayList<Comment> arrayList = new ArrayList<>();
@@ -184,13 +184,13 @@ public class PostImageDetailActivity extends AppCompatActivity {
                         Comment comment = data.getValue(Comment.class);
                         arrayList.add(comment);
                     }
-                    CommentAdapter adapter = new CommentAdapter(arrayList, PostImageDetailActivity.this);
+                    CommentAdapter adapter = new CommentAdapter(arrayList, PostThreeImageDetailActivity.this);
                     recyclerViewListComment.setAdapter(adapter);
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(PostImageDetailActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PostThreeImageDetailActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

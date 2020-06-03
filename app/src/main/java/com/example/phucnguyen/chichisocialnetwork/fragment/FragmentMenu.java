@@ -67,7 +67,7 @@ public class FragmentMenu extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), GroupActivity.class);
-              //  intent.putExtra("user", user);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });

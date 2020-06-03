@@ -73,10 +73,45 @@
             android:id="@+id/textview_content_post_image_detail"
             android:layout_width="wrap_content"
             android:layout_height="0dp"/>
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager_display_image"
+        <LinearLayout
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="300dp"/>
+            android:layout_height="300dp">
+            <ImageView
+                android:scaleType="centerCrop"
+                android:id="@+id/imageview_image_one"
+                android:background="@color/colorPrimaryDark"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:layout_weight="1"
+                    android:id="@+id/imageview_image_two"
+                    android:background="@color/colorPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <ImageView
+                    android:scaleType="centerCrop"
+                    android:layout_weight="1"
+                    android:id="@+id/imageview_image_three"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+        </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

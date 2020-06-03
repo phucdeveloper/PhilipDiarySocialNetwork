@@ -12,13 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.example.phucnguyen.chichisocialnetwork.R;
 import com.example.phucnguyen.chichisocialnetwork.activity.AccountDefaultActivity;
-import com.example.phucnguyen.chichisocialnetwork.activity.PostImageDetailActivity;
 import com.example.phucnguyen.chichisocialnetwork.activity.PostOneImageDetailActivity;
 import com.example.phucnguyen.chichisocialnetwork.activity.PostShareActivity;
 import com.example.phucnguyen.chichisocialnetwork.callback.OnLikeClickListener;

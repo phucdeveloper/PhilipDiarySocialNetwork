@@ -16,7 +16,7 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.example.phucnguyen.chichisocialnetwork.R;
 import com.example.phucnguyen.chichisocialnetwork.activity.AccountDefaultActivity;
-import com.example.phucnguyen.chichisocialnetwork.activity.PostImageDetailActivity;
+import com.example.phucnguyen.chichisocialnetwork.activity.PostThreeImageDetailActivity;
 import com.example.phucnguyen.chichisocialnetwork.activity.PostShareActivity;
 import com.example.phucnguyen.chichisocialnetwork.callback.OnLikeClickListener;
 import com.example.phucnguyen.chichisocialnetwork.model.Timeline;
@@ -70,7 +70,7 @@ public class PostWithImageViewHolder extends PostViewHolder {
         btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PostImageDetailActivity.class);
+                Intent intent = new Intent(context, PostThreeImageDetailActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("user", user);

@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
@@ -56,7 +57,7 @@ public class CreatePostActivity extends AppCompatActivity {
     static int REQUESTCODEIMAGES = 123;
     static int REQUESTCODEVIDEOS = 345;
     ArrayList<String> arrayList = new ArrayList<>();
-    ArrayList<String> listBackground;// = new ArrayList<>();
+    ArrayList<String> listBackground;
     ArrayList<Uri> listImage = new ArrayList<>();
     BackgroundAdapter adapter;
     Uri uri;
@@ -134,10 +135,15 @@ public class CreatePostActivity extends AppCompatActivity {
                     else{
                         String idPost = String.valueOf(System.currentTimeMillis());
                         String contentPost = edtInput.getText().toString();
-                        PostWithText post = new PostWithText(dataUser.getUid(), idPost, timeCreate, 0, null, contentPost);
-                        Timeline timeline = new Timeline(post, Constant.ITEM_POST_WITH_TEXT);
-                        insertDataToFirebase.insertPostWithTextToFirebaseDatabae(post.getIdUser(), post.getIdPost(), timeline);
-                        edtInput.clearFocus();
+                        if(TextUtils.isEmpty(contentPost)){
+                            Toast.makeText(CreatePostActivity.this, "Bài viết của bạn chả có gì", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            PostWithText post = new PostWithText(dataUser.getUid(), idPost, timeCreate, 0, null, contentPost);
+                            Timeline timeline = new Timeline(post, Constant.ITEM_POST_WITH_TEXT);
+                            insertDataToFirebase.insertPostWithTextToFirebaseDatabae(post.getIdUser(), post.getIdPost(), timeline);
+                            edtInput.clearFocus();
+                        }
                     }
                 }
                 finish();

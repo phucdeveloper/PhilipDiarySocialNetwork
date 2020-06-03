@@ -7,13 +7,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.example.phucnguyen.chichisocialnetwork.R;
-import com.example.phucnguyen.chichisocialnetwork.activity.PostImageDetailActivity;
+import com.example.phucnguyen.chichisocialnetwork.activity.PostThreeImageDetailActivity;
 import com.example.phucnguyen.chichisocialnetwork.model.Timeline;
 import com.example.phucnguyen.chichisocialnetwork.model.User;
 import com.google.firebase.database.DatabaseReference;
@@ -72,7 +71,7 @@ public class PostUpdateBackgroundViewHolder extends PostViewHolder {
         btnComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PostImageDetailActivity.class);
+                Intent intent = new Intent(context, PostThreeImageDetailActivity.class);
                 intent.putExtra("data", timeline);
                 context.startActivity(intent);
             }

@@ -6,13 +6,11 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.phucnguyen.chichisocialnetwork.R;
 import com.example.phucnguyen.chichisocialnetwork.fragment.FragmentFriend;
-import com.example.phucnguyen.chichisocialnetwork.fragment.FragmentGroup;
 import com.example.phucnguyen.chichisocialnetwork.fragment.FragmentHome;
 import com.example.phucnguyen.chichisocialnetwork.fragment.FragmentMenu;
 import com.example.phucnguyen.chichisocialnetwork.fragment.FragmentNotification;
@@ -20,8 +18,6 @@ import com.example.phucnguyen.chichisocialnetwork.fragment.FragmentWatch;
 import com.example.phucnguyen.chichisocialnetwork.model.User;
 import com.example.phucnguyen.chichisocialnetwork.callback.OnClickListener;
 import com.example.phucnguyen.chichisocialnetwork.utils.UserUtil;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +31,6 @@ import nl.joery.animatedbottombar.AnimatedBottomBar;
 
 public class HomeActivity extends AppCompatActivity implements OnClickListener {
 
-    BottomNavigationView bottomNavigationView;
     LinearLayout linearLayout;
     AnimatedBottomBar bottomBar;
 
@@ -90,7 +85,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
                     linearLayout.setVisibility(View.GONE);
                     break;
                 case R.id.group:
-                    fragment = new FragmentGroup(user);
+                    fragment = new FragmentFriend(user);
                     linearLayout.setVisibility(View.GONE);
                     break;
                 case R.id.notification:
