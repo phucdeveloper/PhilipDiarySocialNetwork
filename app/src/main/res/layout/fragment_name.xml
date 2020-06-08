@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:text="Bạn tên gì ?"
             android:layout_width="wrap_content"

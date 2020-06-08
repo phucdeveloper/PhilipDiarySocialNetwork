@@ -1,6 +1,7 @@
 package com.example.phucnguyen.chichisocialnetwork.fragment;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -140,17 +142,21 @@ public class FragmentBirthDay extends Fragment {
             }
         });
 
-        final OnSendDataClickListener onSendDataClickListener = (OnSendDataClickListener)getContext();
+        final OnSendDataClickListener onSendDataClickListener = (OnSendDataClickListener) getContext();
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 birthday = day + ", " + month + ", " + year;
-            //    Toast.makeText(getContext(), "BirthDay: " + birthday, Toast.LENGTH_SHORT).show();
-                ((SignUpActivity)getActivity()).setPositionViewPager(4);
-                if(onSendDataClickListener != null){
-                    onSendDataClickListener.onSendDataBirthDay(birthday);
+                if (TextUtils.isEmpty(birthday)) {
+                    ((SignUpActivity) getActivity()).setPositionViewPager(4);
+                    if (onSendDataClickListener != null) {
+                        onSendDataClickListener.onSendDataBirthDay(birthday);
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Bạn vui lòng khai báo ngày tháng năm", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
         return view;

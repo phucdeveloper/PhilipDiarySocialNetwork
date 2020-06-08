@@ -21,6 +21,7 @@ import com.example.phucnguyen.chichisocialnetwork.activity.HomeActivity;
 import com.example.phucnguyen.chichisocialnetwork.adapter.NewPostAdapter;
 import com.example.phucnguyen.chichisocialnetwork.adapter.PostAdapter;
 import com.example.phucnguyen.chichisocialnetwork.callback.OnLikeClickListener;
+import com.example.phucnguyen.chichisocialnetwork.model.Friend;
 import com.example.phucnguyen.chichisocialnetwork.model.NewPost;
 import com.example.phucnguyen.chichisocialnetwork.model.Timeline;
 import com.example.phucnguyen.chichisocialnetwork.model.User;
@@ -38,11 +39,12 @@ public class FragmentHome extends Fragment implements OnLikeClickListener {
     ImageView imgAvatar;
 
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, dataRef;
 
     User user;
     PostAdapter adapter1;
     ArrayList<Timeline> listPost;
+    ArrayList<String> arrayList;
 
     public FragmentHome(User user){
         this.user = user;
@@ -89,6 +91,7 @@ public class FragmentHome extends Fragment implements OnLikeClickListener {
     }
 
     private void setUpRecyclerViewListPost(){
+        final ArrayList<Friend> listFriend = new ArrayList<>();
         recyclerViewListPost.setHasFixedSize(true);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         recyclerViewListPost.setLayoutManager(layoutManager1);
@@ -96,20 +99,44 @@ public class FragmentHome extends Fragment implements OnLikeClickListener {
         listPost = new ArrayList<>();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        //Lay cac bai viet cua user nay va hien thi len recyclerview
-        databaseReference = firebaseDatabase.getReference().child("Posts").child(user.getUid());
-        databaseReference.orderByChild("timeCreate").addValueEventListener(new ValueEventListener() {
+        dataRef = firebaseDatabase.getReference().child("Friend");
+        dataRef.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    Timeline timeline = data.getValue(Timeline.class);
-                   // listPost.clear();
-                    listPost.add(timeline);
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Friend friend = snapshot.getValue(Friend.class);
+                    listFriend.add(friend);
                 }
 
-                adapter1 = new PostAdapter(listPost, getContext(), user);
-                recyclerViewListPost.setAdapter(adapter1);
-                adapter1.notifyDataSetChanged();
+                arrayList = new ArrayList<>();
+                arrayList.add(user.getUid());
+                for (int i=0; i<listFriend.size(); i++){
+                    arrayList.add(listFriend.get(i).getIdUser2());
+                }
+
+                for(int i = 0; i < arrayList.size(); i++){
+                    //Lay cac bai viet cua user nay va hien thi len recyclerview
+                    databaseReference = firebaseDatabase.getReference().child("Posts").child(arrayList.get(i));
+                    databaseReference.orderByChild("timeCreate").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot data : dataSnapshot.getChildren()) {
+                                Timeline timeline = data.getValue(Timeline.class);
+                                // listPost.clear();
+                                listPost.add(timeline);
+                            }
+
+                            adapter1 = new PostAdapter(listPost, getContext(), user);
+                            recyclerViewListPost.setAdapter(adapter1);
+                            adapter1.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
             }
 
             @Override

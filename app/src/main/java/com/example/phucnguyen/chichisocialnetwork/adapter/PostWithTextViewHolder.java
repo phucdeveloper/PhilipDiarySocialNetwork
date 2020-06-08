@@ -42,8 +42,37 @@ public class PostWithTextViewHolder extends PostViewHolder {
     @Override
     void sendData(final Timeline timeline, final int position, final Context context, final User user) {
 
-        Glide.with(context).load(user.getAvatar()).into(imgAvatar);
-        txtNameAccount.setText(user.getNickname());
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        String idUserPost = timeline.getPostText().getIdUser();
+        databaseReference = firebaseDatabase.getReference().child("Users");
+        databaseReference.child(idUserPost).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final User user1 = dataSnapshot.getValue(User.class);
+                Glide.with(context).load(user1.getAvatar()).into(imgAvatar);
+                txtNameAccount.setText(user1.getNickname());
+
+                btnComment.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(context, PostTextDetailActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("userPost", user1);
+                        bundle.putSerializable("timeline", timeline);
+                        bundle.putSerializable("user", user);
+                        intent.putExtra("data", bundle);
+                        context.startActivity(intent);
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         txtTimePost.setText(timeline.getPostText().getTimeCreate());
 
         if (timeline.getPostText().getContentPost().length() < 100) {
@@ -60,19 +89,6 @@ public class PostWithTextViewHolder extends PostViewHolder {
             btnLike.setTextColor(context.getColor(R.color.colorGreenDark));
             btnLike.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
-
-        btnComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, PostTextDetailActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("user", user);
-                bundle.putSerializable("timeline", timeline);
-                intent.putExtra("data", bundle);
-                context.startActivity(intent);
-            }
-        });
 
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override

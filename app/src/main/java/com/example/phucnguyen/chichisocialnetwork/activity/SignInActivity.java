@@ -112,6 +112,10 @@ public class SignInActivity extends AppCompatActivity {
                 })
         ;
     }
+    public void moveToForgotPasswordActvity(View view){
+        Intent intent = new Intent(SignInActivity.this, ForgotPasswordActivity.class);
+        startActivity(intent);
+    }
 
     public void moveToSignUpActivity(View view) {
         Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);

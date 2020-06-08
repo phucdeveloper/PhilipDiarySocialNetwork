@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.example.phucnguyen.chichisocialnetwork.R;
 import com.example.phucnguyen.chichisocialnetwork.activity.AccountDefaultActivity;
+import com.example.phucnguyen.chichisocialnetwork.activity.PostOneImageDetailActivity;
 import com.example.phucnguyen.chichisocialnetwork.activity.PostShareActivity;
 import com.example.phucnguyen.chichisocialnetwork.activity.PostTextBackgroundDetailActivity;
 import com.example.phucnguyen.chichisocialnetwork.callback.OnLikeClickListener;
@@ -42,22 +44,48 @@ public class PostTextWithBackgroundViewHolder extends PostViewHolder {
     @Override
     void sendData(final Timeline timeline, final int position, final Context context, final User user) {
 
-        Glide.with(context).load(user.getAvatar()).into(imgAvatar);
-        Glide.with(context).load(timeline.getPostText().getBackground()).into(imgBackground);
+        String idUserPost = timeline.getPostText().getIdUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference().child("Users");
+        databaseReference.child(idUserPost).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final User user1 = dataSnapshot.getValue(User.class);
+                Glide.with(context).load(user1.getAvatar()).override(300, 300).into(imgAvatar);
+                txtNameAccount.setText(user1.getNickname());
+                txtTimePost.setText(timeline.getPostText().getTimeCreate());
 
+                Glide.with(context).load(timeline.getPostText().getBackground()).into(imgBackground);
+                txtContentPost.setText(timeline.getPostText().getContentPost());
 
-        txtNameAccount.setText(user.getNickname());
-        txtTimePost.setText(timeline.getPostText().getTimeCreate());
-        Glide.with(context).load(timeline.getPostText().getBackground()).into(imgBackground);
-        txtContentPost.setText(timeline.getPostText().getContentPost());
+                if (timeline.getPostText().getContentPost().length() < 100) {
+                    txtContentPost.setTextSize(25);
+                    txtContentPost.setText(timeline.getPostText().getContentPost());
+                } else {
+                    txtContentPost.setTextSize(18);
+                    txtContentPost.setText(timeline.getPostText().getContentPost());
+                }
 
-        if (timeline.getPostText().getContentPost().length() < 100) {
-            txtContentPost.setTextSize(25);
-            txtContentPost.setText(timeline.getPostText().getContentPost());
-        } else {
-            txtContentPost.setTextSize(18);
-            txtContentPost.setText(timeline.getPostText().getContentPost());
-        }
+                btnComment.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(context, PostTextBackgroundDetailActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("userPost", user1);
+                        bundle.putSerializable("user", user);
+                        bundle.putSerializable("timeline", timeline);
+                        intent.putExtra("data", bundle);
+                        context.startActivity(intent);
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         if (timeline.getPostText().getNumberFavorite() != 0) {
             imgLike.setImageResource(R.drawable.ic_thumb_up);
@@ -65,19 +93,6 @@ public class PostTextWithBackgroundViewHolder extends PostViewHolder {
             btnLike.setTextColor(context.getColor(R.color.color));
             btnLike.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         }
-
-        btnComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, PostTextBackgroundDetailActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("user", user);
-                bundle.putSerializable("timeline", timeline);
-                intent.putExtra("data", bundle);
-                context.startActivity(intent);
-            }
-        });
 
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override

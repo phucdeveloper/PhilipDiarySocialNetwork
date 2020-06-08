@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.phucnguyen.chichisocialnetwork.R;
+import com.example.phucnguyen.chichisocialnetwork.activity.AllFriendActivity;
 import com.example.phucnguyen.chichisocialnetwork.activity.SearchActivity;
 import com.example.phucnguyen.chichisocialnetwork.adapter.InviteFriendAdapter;
 import com.example.phucnguyen.chichisocialnetwork.callback.OnClickListener;
@@ -33,14 +34,15 @@ import java.util.ArrayList;
 public class FragmentFriend extends Fragment {
 
     RecyclerView recyclerViewListInviteFriend;
-    Button btnSuggestion;
+    Button btnSuggestion, btnAllFriend;
     ImageButton imgButtonSearch;
 
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference dataRefInviteFriend, dataRefFriend;
 
     User user;
     ArrayList<User> arrayList;
+    Friend friend;
 
     public FragmentFriend(User user) {
         this.user = user;
@@ -52,12 +54,13 @@ public class FragmentFriend extends Fragment {
         View view = inflater.inflate(R.layout.fragment_friend, container, false);
         imgButtonSearch = view.findViewById(R.id.imagebutton_search);
         btnSuggestion = view.findViewById(R.id.button_suggestion);
+        btnAllFriend = view.findViewById(R.id.button_all_friend);
         recyclerViewListInviteFriend = view.findViewById(R.id.recyclerview_list_invite_friend);
         recyclerViewListInviteFriend.setHasFixedSize(true);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("InviteFriend");
-        databaseReference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+        dataRefInviteFriend = firebaseDatabase.getReference().child("InviteFriend");
+        dataRefInviteFriend.child(user.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 arrayList = new ArrayList<>();
@@ -72,19 +75,27 @@ public class FragmentFriend extends Fragment {
                 adapter.setOnAcceptListener(new InviteFriendAdapter.OnAcceptInviteFriendClickListener() {
                     @Override
                     public void onItemClick(int position) {
-                        databaseReference = firebaseDatabase.getReference().child("Friend");
+                        dataRefFriend = firebaseDatabase.getReference().child("Friend");
                         Toast.makeText(getContext(), "Ok, hai bạn đã là bạn bè của nhau", Toast.LENGTH_SHORT).show();
                         String idFriend = String.valueOf(System.currentTimeMillis());
-                        Friend friend = new Friend(idFriend, user.getUid(), arrayList.get(position).getUid());
-                        databaseReference.child(idFriend).setValue(friend);
+                        friend = new Friend(idFriend, user.getUid(), arrayList.get(position).getUid());
+                        dataRefFriend.child(user.getUid()).child(idFriend).setValue(friend);
 
-                        databaseReference.child(idFriend).child(user.getUid()).removeValue();
+                        dataRefInviteFriend.child(user.getUid()).child(arrayList.get(position).getUid()).removeValue();
                     }
                 });
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        btnAllFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AllFriendActivity.class);
+                startActivity(intent);
             }
         });
 

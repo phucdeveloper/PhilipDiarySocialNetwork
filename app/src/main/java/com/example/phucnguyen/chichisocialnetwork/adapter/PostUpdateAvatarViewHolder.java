@@ -48,7 +48,7 @@ public class PostUpdateAvatarViewHolder extends PostViewHolder {
     @Override
     void sendData(final Timeline timeline, int position, final Context context, User user) {
         Glide.with(context).load(user.getAvatar()).into(imgAvatarUpdate);
-        Glide.with(context).load(user.getAvatar()).into(imgAvatar);
+        Glide.with(context).load(user.getAvatar()).override(300, 300).into(imgAvatar);
         txtNameAccount.setText(user.getNickname());
         txtTimePost.setText(timeline.getPostImage().getTimeCreate());
         txtStatus.setText(timeline.getPostImage().getStatusLine());

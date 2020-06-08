@@ -1,11 +1,13 @@
 package com.example.phucnguyen.chichisocialnetwork.fragment;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +23,7 @@ public class FragmentSex extends Fragment {
     RadioButton radioButtonMale, radioButtonFemale, radioButtonCustom;
 
     String sex;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,16 +54,20 @@ public class FragmentSex extends Fragment {
             }
         });
 
-        final OnSendDataClickListener onSendDataClickListener = (OnSendDataClickListener)getContext();
+        final OnSendDataClickListener onSendDataClickListener = (OnSendDataClickListener) getContext();
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   Toast.makeText(getContext(), "Sex: " + sex, Toast.LENGTH_SHORT).show();
-                ((SignUpActivity)getActivity()).setPositionViewPager(3);
-                if(onSendDataClickListener != null){
-                    onSendDataClickListener.onSendDataSex(sex);
+                if (TextUtils.isEmpty(sex)) {
+                    ((SignUpActivity) getActivity()).setPositionViewPager(3);
+                    if (onSendDataClickListener != null) {
+                        onSendDataClickListener.onSendDataSex(sex);
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Bạn chưa chọn giới tính", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 

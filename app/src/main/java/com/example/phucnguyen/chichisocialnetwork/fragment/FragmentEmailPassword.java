@@ -37,7 +37,7 @@ public class FragmentEmailPassword extends Fragment {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((SignUpActivity)getActivity()).setPositionViewPager(1);
+
                 String email = edtEmailPhoneNumber.getText().toString();
                 String password = edtPassword.getText().toString();
                 String confirmPassword = edtConfirmPassword.getText().toString();
@@ -48,11 +48,12 @@ public class FragmentEmailPassword extends Fragment {
                 else if(!confirmPassword.equals(password)){
                     Toast.makeText(getContext(), "Confirm Password không trùng khớp", Toast.LENGTH_SHORT).show();
                 }
-
-                if(onSendDataClickListener != null){
-                    onSendDataClickListener.onSendDataEmail(email, password);
+                else{
+                    ((SignUpActivity)getActivity()).setPositionViewPager(1);
+                    if(onSendDataClickListener != null){
+                        onSendDataClickListener.onSendDataEmail(email, password);
+                    }
                 }
-
             }
         });
         return view;

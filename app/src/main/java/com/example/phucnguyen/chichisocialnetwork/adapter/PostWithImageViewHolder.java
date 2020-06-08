@@ -44,8 +44,23 @@ public class PostWithImageViewHolder extends PostViewHolder {
     @Override
     void sendData(final Timeline timeline, final int position, final Context context, final User user) {
 
-        Glide.with(context).load(user.getAvatar()).into(imgAvatar);
-        txtNameAccount.setText(user.getNickname());
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        String idUserPost = timeline.getPostImage().getIdUser();
+        databaseReference = firebaseDatabase.getReference().child("Users");
+        databaseReference.child(idUserPost).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user1 = dataSnapshot.getValue(User.class);
+                Glide.with(context).load(user1.getAvatar()).override(300, 300).into(imgAvatar);
+                txtNameAccount.setText(user1.getNickname());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         txtTimePost.setText(timeline.getPostImage().getTimeCreate());
 
         if(!TextUtils.isEmpty(timeline.getPostImage().getStatusLine())){

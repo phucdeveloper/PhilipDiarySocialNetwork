@@ -51,7 +51,7 @@ public class PostTwoImageDetailActivity extends AppCompatActivity {
     boolean isPicture = false;
     static int REQUESTCODE = 123;
     Timeline timeline;
-    User user;
+    User user, userPost;
     Comment comment;
 
     @Override
@@ -68,15 +68,16 @@ public class PostTwoImageDetailActivity extends AppCompatActivity {
         if (bundle != null) {
             timeline = (Timeline) bundle.getSerializable("timeline");
             user = (User) bundle.getSerializable("user");
+            userPost = (User) bundle.getSerializable("userPost");
         }
 
         if (timeline == null) {
             Toast.makeText(PostTwoImageDetailActivity.this, "Khong nhan duoc du lieu nao ca", Toast.LENGTH_SHORT).show();
         } else {
             idPost = timeline.getPostImage().getIdPost();
-            Glide.with(PostTwoImageDetailActivity.this).load(user.getAvatar()).into(imgAvatar);
+            Glide.with(PostTwoImageDetailActivity.this).load(userPost.getAvatar()).into(imgAvatar);
             txtTimeCreate.setText(timeline.getPostImage().getTimeCreate());
-            txtNameAccount.setText(user.getNickname());
+            txtNameAccount.setText(userPost.getNickname());
             Glide.with(PostTwoImageDetailActivity.this).load(user.getAvatar()).into(imgAvatarComment);
             Glide.with(PostTwoImageDetailActivity.this).load(timeline.getPostImage().getArrayList().get(0)).into(imgOne);
             Glide.with(PostTwoImageDetailActivity.this).load(timeline.getPostImage().getArrayList().get(1)).into(imgTwo);

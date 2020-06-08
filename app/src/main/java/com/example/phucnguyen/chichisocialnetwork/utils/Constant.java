@@ -13,4 +13,7 @@ public class Constant {
 
     public static final int ITEM_POST_UPDATE_AVATAR = 6;
     public static final int ITEM_POST_UPDATE_BACKGROUND = 7;
+
+    public static final  int ITEM_FRIEND_IN_ACCOUNT = 9;
+    public static final  int ITEM_FRIEND_IN_ALL_FRIEND = 10;
 }

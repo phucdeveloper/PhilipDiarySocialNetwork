@@ -53,7 +53,7 @@ public class PostTextDetailActivity extends AppCompatActivity {
     boolean isPicture = false;
     static int REQUESTCODE = 123;
     Timeline timeline;
-    User user;
+    User user, userPost;
     Comment comment;
 
     @Override
@@ -70,15 +70,16 @@ public class PostTextDetailActivity extends AppCompatActivity {
         if (bundle != null) {
             timeline = (Timeline) bundle.getSerializable("timeline");
             user = (User) bundle.getSerializable("user");
+            userPost = (User) bundle.getSerializable("userPost");
         }
 
         if (timeline == null) {
             Toast.makeText(PostTextDetailActivity.this, "Khong nhan duoc du lieu nao ca", Toast.LENGTH_SHORT).show();
         } else {
             idPost = timeline.getPostText().getIdPost();
-            txtNameAccount.setText(user.getNickname());
+            txtNameAccount.setText(userPost.getNickname());
             txtTimeCreate.setText(timeline.getPostText().getTimeCreate());
-            Glide.with(PostTextDetailActivity.this).load(user.getAvatar()).into(imgAvatar);
+            Glide.with(PostTextDetailActivity.this).load(userPost.getAvatar()).into(imgAvatar);
             Glide.with(PostTextDetailActivity.this).load(user.getAvatar()).into(imgAvatarComment);
             txtContentPost.setText(timeline.getPostText().getContentPost());
         }
