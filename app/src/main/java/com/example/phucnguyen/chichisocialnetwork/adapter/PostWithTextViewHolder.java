@@ -49,7 +49,7 @@ public class PostWithTextViewHolder extends PostViewHolder {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final User user1 = dataSnapshot.getValue(User.class);
-                Glide.with(context).load(user1.getAvatar()).into(imgAvatar);
+                Glide.with(context).load(user1.getAvatar()).override(300, 300).into(imgAvatar);
                 txtNameAccount.setText(user1.getNickname());
 
                 btnComment.setOnClickListener(new View.OnClickListener() {

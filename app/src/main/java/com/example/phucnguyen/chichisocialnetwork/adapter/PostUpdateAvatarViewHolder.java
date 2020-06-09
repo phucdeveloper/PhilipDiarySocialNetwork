@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class PostUpdateAvatarViewHolder extends PostViewHolder {
     ImageButton imgButtonMenu;
     Button btnComment, btnLike;
     TextView txtNumberFavorite;
+    LinearLayout linearLayout;
 
     int dem = 0;
 
@@ -43,10 +45,13 @@ public class PostUpdateAvatarViewHolder extends PostViewHolder {
         btnComment = itemView.findViewById(R.id.button_comment);
         txtNumberFavorite = itemView.findViewById(R.id.textview_number_favorite);
         imgButtonMenu = itemView.findViewById(R.id.imagebutton_menu_image);
+        linearLayout = itemView.findViewById(R.id.layout);
     }
 
     @Override
     void sendData(final Timeline timeline, int position, final Context context, User user) {
+        linearLayout.setVisibility(View.GONE);
+
         Glide.with(context).load(user.getAvatar()).into(imgAvatarUpdate);
         Glide.with(context).load(user.getAvatar()).override(300, 300).into(imgAvatar);
         txtNameAccount.setText(user.getNickname());

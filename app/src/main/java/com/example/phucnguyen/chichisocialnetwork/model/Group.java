@@ -6,19 +6,13 @@ import java.util.ArrayList;
 public class Group implements Serializable {
     private String nameGroup;
     private User adminGroup;
-  //  private String avatarGroup;
-    private int avatarGroup;
+    private String avatarGroup;
     private ArrayList<User> listUsers;
     private ArrayList<Timeline> listTimelines;
     private String typeGroup;
     private String modeGroup;
 
-    public Group(String nameGroup, int avatarGroup) {
-        this.nameGroup = nameGroup;
-        this.avatarGroup = avatarGroup;
-    }
-
-    /*  public Group(String nameGroup, String avatarGroup, String typeGroup) {
+      public Group(String nameGroup, String avatarGroup, String typeGroup) {
         this.nameGroup = nameGroup;
         this.avatarGroup = avatarGroup;
         this.typeGroup = typeGroup;
@@ -39,14 +33,6 @@ public class Group implements Serializable {
         this.listTimelines = listTimelines;
         this.typeGroup = typeGroup;
         this.modeGroup = modeGroup;
-    }*/
-
-    public int getAvatarGroup() {
-        return avatarGroup;
-    }
-
-    public void setAvatarGroup(int avatarGroup) {
-        this.avatarGroup = avatarGroup;
     }
 
     public String getNameGroup() {
@@ -65,13 +51,13 @@ public class Group implements Serializable {
         this.adminGroup = adminGroup;
     }
 
- /*   public String getAvatarGroup() {
+    public String getAvatarGroup() {
         return avatarGroup;
     }
 
     public void setAvatarGroup(String avatarGroup) {
         this.avatarGroup = avatarGroup;
-    }*/
+    }
 
     public ArrayList<User> getListUsers() {
         return listUsers;

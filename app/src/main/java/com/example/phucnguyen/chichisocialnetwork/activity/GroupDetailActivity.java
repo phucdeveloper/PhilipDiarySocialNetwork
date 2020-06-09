@@ -27,11 +27,6 @@ public class GroupDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Group group = (Group) intent.getSerializableExtra("group");
-
-        if (group != null) {
-            imgBackgroundGroup.setImageResource(group.getAvatarGroup());
-            txtNameGroup.setText(group.getNameGroup());
-        }
     }
 
     private void initView() {

@@ -37,7 +37,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtNameGroup.setText(arrayList.get(position).getNameGroup());
-        holder.imgAvatarGroup.setImageResource(arrayList.get(position).getAvatarGroup());
+
     }
 
     @Override
