@@ -34,7 +34,7 @@ public class AddMemberAdapter extends RecyclerView.Adapter<AddMemberAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Glide.with(context).load(arrayList.get(position).getAvatar()).override(300, 300).into(holder.imgMember);
+        Glide.with(context).load(arrayList.get(position).getAvatar()).into(holder.imgMember);
         holder.txtMember.setText(arrayList.get(position).getNickname());
     }
 

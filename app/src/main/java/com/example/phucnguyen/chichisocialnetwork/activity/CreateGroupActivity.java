@@ -30,6 +30,7 @@ import com.example.phucnguyen.chichisocialnetwork.adapter.AddMemberAdapter;
 import com.example.phucnguyen.chichisocialnetwork.fragment.FragmentAddMember;
 import com.example.phucnguyen.chichisocialnetwork.fragment.FragmentTypeGroup;
 import com.example.phucnguyen.chichisocialnetwork.model.User;
+import com.example.phucnguyen.chichisocialnetwork.utils.UserUtil;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,8 +48,6 @@ public class CreateGroupActivity extends AppCompatActivity {
     RadioButton rbPublic, rbPrivate;
     TextView txtAddImageBackground;
     ImageView imgBackground;
-    Button btnCancel, btnComplete;
-    RecyclerView recyclerViewListMember;
 
 
     static int REQUESTCODE = 123;
@@ -62,6 +61,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_group);
         initView();
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +111,9 @@ public class CreateGroupActivity extends AppCompatActivity {
     }
 
     private void showDialog(){
+        Button btnCancel, btnComplete;
+        final RecyclerView recyclerViewListMember;
+
         final ArrayList<User> arrayList =  new ArrayList<>();
         final Dialog dialog = new Dialog(CreateGroupActivity.this);
         dialog.setContentView(R.layout.layout_dialog_add_member);
@@ -121,11 +124,13 @@ public class CreateGroupActivity extends AppCompatActivity {
         recyclerViewListMember = dialog.findViewById(R.id.recyclerview_list_member);
         recyclerViewListMember.setHasFixedSize(true);
 
-        recyclerViewListMember.setLayoutManager(new LinearLayoutManager(CreateGroupActivity.this, RecyclerView.VERTICAL, false));
+        recyclerViewListMember.setLayoutManager(new LinearLayoutManager(CreateGroupActivity.this));
+
+        String idUser = UserUtil.getIdUser(CreateGroupActivity.this);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         dataRef = firebaseDatabase.getReference().child("Friend");
-        dataRef.addValueEventListener(new ValueEventListener() {
+        dataRef.child(idUser).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){

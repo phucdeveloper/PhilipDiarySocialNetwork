@@ -47,7 +47,6 @@ public class GroupActivity extends AppCompatActivity implements OnClickListener 
         //Nhan interface tu fragment group va di chuyen den man hinh tao group
         if(code == 456){
             Intent intent = new Intent(GroupActivity.this, CreateGroupActivity.class);
-            intent.putExtra("user", user);
             startActivity(intent);
         }
     }
