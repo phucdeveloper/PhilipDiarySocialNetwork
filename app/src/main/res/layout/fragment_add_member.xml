@@ -7,9 +7,4 @@
     android:layout_height="match_parent"
     tools:context=".fragment.FragmentAddMember">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_list_member"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
 </LinearLayout>

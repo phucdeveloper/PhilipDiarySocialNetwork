@@ -2,31 +2,42 @@ package com.example.phucnguyen.chichisocialnetwork.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.phucnguyen.chichisocialnetwork.R;
+import com.example.phucnguyen.chichisocialnetwork.adapter.AddMemberAdapter;
 import com.example.phucnguyen.chichisocialnetwork.fragment.FragmentAddMember;
 import com.example.phucnguyen.chichisocialnetwork.fragment.FragmentTypeGroup;
-import com.example.phucnguyen.chichisocialnetwork.model.Group;
+import com.example.phucnguyen.chichisocialnetwork.model.User;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class CreateGroupActivity extends AppCompatActivity {
 
@@ -36,13 +47,16 @@ public class CreateGroupActivity extends AppCompatActivity {
     RadioButton rbPublic, rbPrivate;
     TextView txtAddImageBackground;
     ImageView imgBackground;
-    ViewPager viewPager;
-    TabLayout tabLayout;
+    Button btnCancel, btnComplete;
+    RecyclerView recyclerViewListMember;
 
 
     static int REQUESTCODE = 123;
     boolean isPublic = false;
     String avatar;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference dataRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +93,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         btnCreateGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDiaLog();
+                showDialog();
          /*       if(isPublic){
                     String publicGroup = rbPublic.getText().toString();
                     String nameGroup = edtNameGroup.getText().toString();
@@ -96,54 +110,73 @@ public class CreateGroupActivity extends AppCompatActivity {
 
     }
 
-    class PagerAdapter extends FragmentPagerAdapter{
+    private void showDialog(){
+        final ArrayList<User> arrayList =  new ArrayList<>();
+        final Dialog dialog = new Dialog(CreateGroupActivity.this);
+        dialog.setContentView(R.layout.layout_dialog_add_member);
+        dialog.getWindow().getAttributes().gravity = Gravity.CENTER;
+        dialog.getWindow().setLayout(Toolbar.LayoutParams.MATCH_PARENT, Toolbar.LayoutParams.MATCH_PARENT);
+        btnCancel = dialog.findViewById(R.id.button_cancel);
+        btnComplete = dialog.findViewById(R.id.button_complete);
+        recyclerViewListMember = dialog.findViewById(R.id.recyclerview_list_member);
+        recyclerViewListMember.setHasFixedSize(true);
 
-        public PagerAdapter(@NonNull FragmentManager fm, int behavior) {
-            super(fm, behavior);
-        }
+        recyclerViewListMember.setLayoutManager(new LinearLayoutManager(CreateGroupActivity.this, RecyclerView.VERTICAL, false));
 
-        @NonNull
-        @Override
-        public Fragment getItem(int position) {
-            switch (position){
-                case 0:
-                    return new FragmentAddMember();
-                case 1:
-                    return new FragmentTypeGroup();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        dataRef = firebaseDatabase.getReference().child("Friend");
+        dataRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    User user = snapshot.getValue(User.class);
+                    arrayList.add(user);
+                }
+
+                AddMemberAdapter adapter = new AddMemberAdapter(arrayList, CreateGroupActivity.this);
+                recyclerViewListMember.setAdapter(adapter);
             }
-            return null;
-        }
 
-        @Override
-        public int getCount() {
-            return 2;
-        }
-    }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-    private void showDiaLog(){
-        Dialog dialog = new Dialog(CreateGroupActivity.this);
-        dialog.setContentView(R.layout.layout_dialog_create_group);
+            }
+        });
 
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        viewPager = dialog.findViewById(R.id.container);
-        tabLayout = dialog.findViewById(R.id.tab_layout);
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        btnComplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(CreateGroupActivity.this, "Group Created", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+
         dialog.show();
     }
 
 
-
-   /* private void showDialog(){
+  /*  private void showDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(CreateGroupActivity.this);
-        builder.setView(R.layout.layout_dialog_create_group);
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        AlertDialog dialog = builder.create();
+        builder.setView(R.layout.layout_dialog_add_member);
+        final AlertDialog dialog = builder.create();
         viewPager = dialog.findViewById(R.id.container);
         tabLayout = dialog.findViewById(R.id.tab_layout);
+        btnCancel = dialog.findViewById(R.id.button_cancel);
+        btnComplete = dialog.findViewById(R.id.button_complete);
 
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+
         dialog.show();
     }*/
 
@@ -172,7 +205,6 @@ public class CreateGroupActivity extends AppCompatActivity {
         edtNameGroup = findViewById(R.id.edittext_name_group);
         rbPublic = findViewById(R.id.radiobutton_public);
         rbPrivate = findViewById(R.id.radiobutton_private);
-        btnCreateGroup.setEnabled(false);
         txtAddImageBackground = findViewById(R.id.textview_add_image_background);
         imgBackground = findViewById(R.id.imageview_background_group);
 

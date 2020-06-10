@@ -28,9 +28,9 @@ public class FragmentGroup extends Fragment {
 
     User user;
 
-    public FragmentGroup(User user){
+  /*  public FragmentGroup(User user){
         this.user = user;
-    }
+    }*/
 
     @Nullable
     @Override

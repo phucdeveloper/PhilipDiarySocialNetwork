@@ -67,7 +67,8 @@ public class GroupActivity extends AppCompatActivity implements OnClickListener 
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new FragmentGroup(user);
+                  //  return new FragmentGroup(user);
+                return new FragmentGroup();
                 case 1:
                     return new FragmentDiscover();
                 case 2:
