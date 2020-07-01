@@ -69,7 +69,7 @@ public class FragmentFriend extends Fragment {
                     arrayList.add(user);
                 }
 
-                InviteFriendAdapter adapter = new InviteFriendAdapter(arrayList, getContext(), user);
+                final InviteFriendAdapter adapter = new InviteFriendAdapter(arrayList, getContext(), user);
                 recyclerViewListInviteFriend.setAdapter(adapter);
 
                 adapter.setOnAcceptListener(new InviteFriendAdapter.OnAcceptInviteFriendClickListener() {
@@ -80,6 +80,7 @@ public class FragmentFriend extends Fragment {
                         String idFriend = String.valueOf(System.currentTimeMillis());
                         friend = new Friend(idFriend, user.getUid(), arrayList.get(position).getUid());
                         dataRefFriend.child(user.getUid()).child(idFriend).setValue(friend);
+                        dataRefFriend.child(arrayList.get(position).getUid()).child(idFriend).setValue(friend);
 
                         dataRefInviteFriend.child(user.getUid()).child(arrayList.get(position).getUid()).removeValue();
                     }
@@ -98,6 +99,16 @@ public class FragmentFriend extends Fragment {
                 startActivity(intent);
             }
         });
+
+     /*   btnSuggestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OnClickListener onClickListener = (OnClickListener) getContext();
+                if (onClickListener != null) {
+                    onClickListener.onClick(user, 123);
+                }
+            }
+        });*/
 
         return view;
     }
